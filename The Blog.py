@@ -2,10 +2,15 @@ from flask import Flask,render_template,request
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 import  pymysql
+import json
+
+with open("config.json") as file:
+	params = json.load(file)["params"]
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/thetravelers'
+app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
+
 db = SQLAlchemy(app)
 
 class Contacts(db.Model):
@@ -17,7 +22,7 @@ class Contacts(db.Model):
 	time = db.Column(db.String(20), nullable=False)
 @app.route("/")
 def main():
-	return render_template('index.html')
+	return render_template('index.html', params = params)
 
 @app.route("/index")
 def Home():
