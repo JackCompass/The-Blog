@@ -6,7 +6,14 @@
 		"prod_uri":"mysql+pymysql://root:@localhost/thetravelers",
 		"facebook":"https://www.facebook.com/",
 		"twitter":"https://www.twitter.com",
-		"instagram":"https://www.instagram.com"
+		"instagram":"https://www.instagram.com",
+		"blog_template_1":"The",
+		"blog_template_2":"Five",
+		"blog_name":"Thetraveler",
+		"admin_address":"203 St. Mountain View, San Francisco, California, USA",
+		"admin_phno":"+8742698514",
+		"admin_email":"info@mycompany.com",
+		"blog_description":"Lucknow, the capital of Uttar Pradesh was historically known as the Awadh region. Fondly known as the 'City of Nawabs' or the 'City of Tehzeeb', it has always been a city filled with varied cultures."
 
 	}
 }

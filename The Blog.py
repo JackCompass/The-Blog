@@ -26,15 +26,15 @@ def main():
 
 @app.route("/index")
 def Home():
-	return render_template('index.html')
+	return render_template('index.html', params = params)
 
 @app.route("/blog")
 def articles():
-	return render_template('blog.html')
+	return render_template('blog.html', params = params)
 
 @app.route("/about")
 def about():
-	return render_template('about.html')
+	return render_template('about.html', params = params)
 
 @app.route("/contact", methods = ['GET', 'POST'])
 def contact():
@@ -49,7 +49,7 @@ def contact():
 		db.session.add(query)
 		db.session.commit()
 
-	return render_template('contact.html')
+	return render_template('contact.html', params = params)
 
 app.run(debug=True)
 

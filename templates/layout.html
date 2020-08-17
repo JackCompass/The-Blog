@@ -26,7 +26,7 @@
     
       <nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-          <a class="navbar-brand" href="index.html">The<i>Five</i>.</a>
+          <a class="navbar-brand" href="index.html">{{params['blog_template_1']}}<i>{{params['blog_template_2']}}</i>.</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
           </button>
@@ -54,9 +54,9 @@
               <h2 class="logo"><a href="#">Read<span>it</span>.</a></h2>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="{{params['twitter']}}"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="{{params['facebook']}}"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="{{params['instagram']}}"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="{{params['twitter']}}" target="_blank"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="{{params['facebook']}}" target="_blank"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="{{params['instagram']}}" target="_blank"><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -103,9 +103,9 @@
               <h2 class="ftco-heading-2">Have a Questions?</h2>
               <div class="block-23 mb-3">
                 <ul>
-                  <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                  <li><span class="icon icon-map-marker"></span><span class="text">{{params['admin_address']}}</span></li>
+                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">{{params['admin_phno']}}</span></a></li>
+                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">{{params['admin_email']}}</span></a></li>
                 </ul>
               </div>
             </div>
