@@ -43,10 +43,10 @@ class Posts(db.Model):
 def main():
 	return render_template('index.html', params = params)
 
-@app.route("/blog-single.html")
-def post_from_database():
-	# post = Posts.query.filter_by(slug = post_slug).first()
-	return render_template('blog-single.html', params = params)
+@app.route("/blog/<string:post_slug>",methods = ['Get'])
+def post_from_database(post_slug):
+	post = Posts.query.filter_by(slug = post_slug).first()
+	return render_template('blogpost.html', params = params, post = post)
 
 @app.route("/index")
 def Home():
