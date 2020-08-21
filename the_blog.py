@@ -34,6 +34,7 @@ class Posts(db.Model):
 	sno = db.Column(db.Integer, primary_key=True)
 	place = db.Column(db.String(30), nullable=False)
 	title = db.Column(db.String(50), nullable=False)
+	img_file = db.Column(db.String(30), nullable=True)
 	content = db.Column(db.String(800), nullable=False)
 	date = db.Column(db.String(20), nullable=False)
 	slug = db.Column(db.String(50), nullable=False)
@@ -41,7 +42,8 @@ class Posts(db.Model):
 
 @app.route("/")
 def main():
-	return render_template('index.html', params = params)
+	posts = Posts.query.filter_by().all()
+	return render_template('index.html', params = params, posts = posts)
 
 @app.route("/blog/<string:post_slug>",methods = ['Get'])
 def post_from_database(post_slug):
@@ -50,7 +52,8 @@ def post_from_database(post_slug):
 
 @app.route("/index")
 def Home():
-	return render_template('index.html', params = params)
+	posts = Posts.query.filter_by().all()
+	return render_template('index.html', params = params, posts = posts)
 
 @app.route("/blog")
 def articles():

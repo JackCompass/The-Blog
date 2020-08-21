@@ -3,7 +3,7 @@
 	{
 		"local_server": "True",
 		"username":"kumaranuj1303@gmail.com",
-		"password":"242784@King",
+		"password":"",
 		"local_uri":"mysql+pymysql://root:@localhost/thetravelers",
 		"prod_uri":"mysql+pymysql://root:@localhost/thetravelers",
 		"facebook":"https://www.facebook.com/",
