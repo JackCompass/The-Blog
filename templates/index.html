@@ -38,6 +38,7 @@
   
 
             {% set fname = 'images/' + post.img_file %}
+          <li>
             <div class="case">
    						<div class="row">
    							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
@@ -53,12 +54,13 @@
 			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
 			              </ul>
    									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
+   										<p class="mb-0"><a href="#">{{post.date}}</a> | <a href="#">12 min read</a></p>
    									</div>
    								</div>
    							</div>
    						</div>
    					</div>
+          </li>
    					
           {% endfor %}
 
