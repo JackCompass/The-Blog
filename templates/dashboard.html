@@ -50,8 +50,8 @@
         <td>{{post.sno}}</td>
         <td>{{post.title}}</td>
         <td>{{post.date}}</td>
-        <td><button class="btn btn-primary py-1 px-2">EDIT</button></td>
-        <td><button class="btn btn-primary py-1 px-2">DELETE</button></td>
+        <td><a href="/management/{{post.sno}}"><button class="btn btn-primary py-1 px-2">EDIT</button></td>
+        <td><a href="/management/{{post.sno}}"><button class="btn btn-primary py-1 px-2">DELETE</button></td>
       </tr>
     
     {% endfor %}

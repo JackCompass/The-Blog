@@ -48,6 +48,9 @@ def main():
 
 @app.route("/admin", methods = ['GET', 'POST'])
 def admin():
+	if 'user' in session and session['user'] == params['username']:
+		posts = Posts.query.filter_by().all()
+		return render_template('dashboard.html', params = params, posts = posts)
 	if request.method == 'POST':
 		username = request.form.get('username')
 		password = request.form.get('pass')
@@ -65,6 +68,28 @@ def admin():
 def post_from_database(post_slug):
 	post = Posts.query.filter_by(slug = post_slug).first()
 	return render_template('blogpost.html', params = params, post = post)
+
+
+@app.route("/management/<string:sno>",methods = ['Get','POST'])
+def manage(sno):
+	# if ('user' in session and session['user'] == params['username']):
+		if request.method == 'POST':
+			place = request.form.get('place')
+			title = request.form.get('title')
+			slug = request.form.get('slug')
+			date = datetime.now()
+			img = request.form.get('img')
+			content = request.form.get('content')
+			print("i am here...")
+
+			if sno == '0':
+				post = Posts(place = place, title = title, slug = slug, img_file = img, date = date, content = content)
+				db.session.add(post)
+				db.session.commit()
+				# mail.send_message('New post added', sender = 'Admin', recipients = [params['username']], body = content)
+		return render_template('management.html', params = params, sno = sno)
+
+
 
 @app.route("/index")
 def Home():

@@ -31,32 +31,28 @@
    		<div class="container">
    			<div class="row">
    				<div class="col-md-12">
-            Hello Admin
-             <table class="table">
-    <thead>
-      <tr>
-        <th>S.NO</th>
-        <th>TITLE</th>
-        <th>DATE</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
+            <div class="navbar-brand">Hi<i>Admin</i>!</div>
+            <form action="/management/{{sno}}" method="post" class="bg-light p-4 p-md-5 contact-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Place" name = "place">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Title" name = "title">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Slug" name = "slug">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Image" name = "img">
+              </div>
+              <div class="form-group">
+                 <textarea id="" cols="30" rows="7" class="form-control" placeholder="Content"  name="content"></textarea>
+              </div>
 
-      </tr>
-    </thead>
-    <tbody>
-
-      {% for post in posts %}
-      <tr>
-        <td>{{post.sno}}</td>
-        <td>{{post.title}}</td>
-        <td>{{post.date}}</td>
-        <td><button class="btn btn-primary py-1 px-2">EDIT</button></td>
-        <td><button class="btn btn-primary py-1 px-2">DELETE</button></td>
-      </tr>
-    
-    {% endfor %}
-    </tbody>
-  </table>
+              <div class="form-group">
+                <input type="submit" value="SUBMIT" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
 
           </div>
    			</div>
