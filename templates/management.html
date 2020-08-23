@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <!-- END nav -->
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url('{{ url_for('static', filename='images/bg_1.jpg') }}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-12 ftco-animate">
+          	<h2 class="subheading">Hello! Welcome to</h2>
+          	<h1 class="mb-4 mb-md-0">{{params['blog_name']}}</h1>
+          	<div class="row">
+          		<div class="col-md-7">
+          			<div class="text">
+	          			<p>{{params['blog_description']}}</p>
+	          			<div class="mouse">
+										<a href="#" class="mouse-icon">
+											<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+										</a>
+									</div>
+								</div>
+          		</div>
+          	</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   	<section class="ftco-section">
+   		<div class="container">
+   			<div class="row">
+   				<div class="col-md-12">
+            Hello Admin
+             <table class="table">
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>TITLE</th>
+        <th>DATE</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for post in posts %}
+      <tr>
+        <td>{{post.sno}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.date}}</td>
+        <td><button class="btn btn-primary py-1 px-2">EDIT</button></td>
+        <td><button class="btn btn-primary py-1 px-2">DELETE</button></td>
+      </tr>
+    
+    {% endfor %}
+    </tbody>
+  </table>
+
+          </div>
+   			</div>
+   			<div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+   		</div>
+   	</section>
+
+  {% endblock %}

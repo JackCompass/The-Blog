@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,session
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
@@ -9,6 +9,7 @@ with open("config.json") as file:
 	params = json.load(file)["params"]
 
 app = Flask(__name__)
+app.secret_key = 'the random string'
 app.config.update(
 	MAIL_SERVER = 'smtp.gmail.com',
 	MAIL_PORT = '465',
@@ -50,8 +51,15 @@ def admin():
 	if request.method == 'POST':
 		username = request.form.get('username')
 		password = request.form.get('pass')
+		if (username == params['username']) and (password == params['password']):
+			session['user'] = username
+			posts = Posts.query.filter_by().all()
+			return render_template('dashboard.html', params = params, posts = posts)
+		else:
+			return render_template('login.html', params = params)
 	else:
 		return render_template('login.html', params = params)
+
 
 @app.route("/blog/<string:post_slug>",methods = ['Get'])
 def post_from_database(post_slug):
