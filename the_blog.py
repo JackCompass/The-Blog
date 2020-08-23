@@ -55,12 +55,12 @@ def admin():
 
 @app.route("/blog/<string:post_slug>",methods = ['Get'])
 def post_from_database(post_slug):
-	post = Posts.query.filter_by(slug = post_slug).first()[0:params["no_of_post"]]
+	post = Posts.query.filter_by(slug = post_slug).first()
 	return render_template('blogpost.html', params = params, post = post)
 
 @app.route("/index")
 def Home():
-	posts = Posts.query.filter_by().all()
+	posts = Posts.query.filter_by().all()[0:params["no_of_post"]]
 	return render_template('index.html', params = params, posts = posts)
 
 @app.route("/blog")
