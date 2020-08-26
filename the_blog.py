@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,session
+from flask import Flask,render_template,request,session,redirect
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
@@ -63,14 +63,19 @@ def admin():
 	else:
 		return render_template('login.html', params = params)
 
+@app.route("/logout", methods =['GET'])
+def logout():
+	session.pop('user')
+	return redirect('/admin')
 
-@app.route("/blog/<string:post_slug>",methods = ['Get'])
+
+@app.route("/blog/<string:post_slug>",methods = ['GET'])
 def post_from_database(post_slug):
 	post = Posts.query.filter_by(slug = post_slug).first()
 	return render_template('blogpost.html', params = params, post = post)
 
 
-@app.route("/management/<string:sno>",methods = ['Get','POST'])
+@app.route("/management/<string:sno>",methods = ['GET','POST'])
 def manage(sno):
 	# if ('user' in session and session['user'] == params['username']):
 		if request.method == 'POST':
@@ -80,15 +85,32 @@ def manage(sno):
 			date = datetime.now()
 			img = request.form.get('img')
 			content = request.form.get('content')
-			print("i am here...")
 
 			if sno == '0':
 				post = Posts(place = place, title = title, slug = slug, img_file = img, date = date, content = content)
 				db.session.add(post)
 				db.session.commit()
 				# mail.send_message('New post added', sender = 'Admin', recipients = [params['username']], body = content)
-		return render_template('management.html', params = params, sno = sno)
+			else:
+				post = Posts.query.filter_by(sno = sno).first()
+				post.place = place
+				post.title = title
+				post.slug = slug
+				post.img_file = img
+				post.date = date
+				post.content = content
+				db.session.commit()
+				return redirect(f"/management/{sno}")
+		post = Posts.query.filter_by(sno = sno).first()
+		return render_template('management.html', params = params, post = post)
 
+@app.route("/delete/<string:sno>", methods =['GET'])
+def delete(sno):
+	if 'user' in session and session['user'] == params['username']:
+		post = Posts.query.filter_by(sno = sno).first()
+		db.session.delete(post)
+		db.session.commit()
+	return redirect('/admin')
 
 
 @app.route("/index")

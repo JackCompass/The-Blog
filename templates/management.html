@@ -32,21 +32,21 @@
    			<div class="row">
    				<div class="col-md-12">
             <div class="navbar-brand">Hi<i>Admin</i>!</div>
-            <form action="/management/{{sno}}" method="post" class="bg-light p-4 p-md-5 contact-form">
+            <form action="/management/{{post.sno}}" method="post" class="bg-light p-4 p-md-5 contact-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Place" name = "place">
+                <input type="text" class="form-control" placeholder="Place" name = "place" value="{{post.place}}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Title" name = "title">
+                <input type="text" class="form-control" placeholder="Title" name = "title" value="{{post.title}}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Slug" name = "slug">
+                <input type="text" class="form-control" placeholder="Slug" name = "slug" value="{{post.slug}}">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Image" name = "img">
+                <input type="text" class="form-control" placeholder="Image" name = "img" value="{{post.img_file}}">
               </div>
               <div class="form-group">
-                 <textarea id="" cols="30" rows="7" class="form-control" placeholder="Content"  name="content"></textarea>
+                 <textarea id="" cols="30" rows="7" class="form-control" placeholder="Content" name="content">{{post.content}}</textarea>
               </div>
 
               <div class="form-group">

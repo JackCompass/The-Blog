@@ -31,30 +31,31 @@
    		<div class="container">
    			<div class="row">
    				<div class="col-md-12">
-            Hello Admin
+            Hello Admin 
+            <a href="/management/0"><button class="btn btn-primary py-1 px-2">  ADD POST</button>
+             <a href="/logout"><button class="btn btn-primary py-1 px-2">Logout</button>
              <table class="table">
-    <thead>
-      <tr>
-        <th>S.NO</th>
-        <th>TITLE</th>
-        <th>DATE</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
+          <thead>
+            <tr>
+              <th>S.NO</th>
+              <th>TITLE</th>
+              <th>DATE</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
 
-      </tr>
-    </thead>
-    <tbody>
+            </tr>
+          </thead>
 
-      {% for post in posts %}
-      <tr>
-        <td>{{post.sno}}</td>
-        <td>{{post.title}}</td>
-        <td>{{post.date}}</td>
-        <td><a href="/management/{{post.sno}}"><button class="btn btn-primary py-1 px-2">EDIT</button></td>
-        <td><a href="/management/{{post.sno}}"><button class="btn btn-primary py-1 px-2">DELETE</button></td>
-      </tr>
-    
-    {% endfor %}
+            {% for post in posts %}
+            <tr>
+              <td>{{post.sno}}</td>
+              <td>{{post.title}}</td>
+              <td>{{post.date}}</td>
+              <td><a href="/management/{{post.sno}}"><button class="btn btn-primary py-1 px-2">EDIT</button></td>
+              <td><a href="/delete/{{post.sno}}"><button class="btn btn-primary py-1 px-2">DELETE</button></td>
+            </tr>
+          
+          {% endfor %}
     </tbody>
   </table>
 
