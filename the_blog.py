@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 import  pymysql
 import json
+import math
 
 with open("config.json") as file:
 	params = json.load(file)["params"]
@@ -43,8 +44,23 @@ class Posts(db.Model):
 
 @app.route("/")
 def main():
-	posts = Posts.query.filter_by().all()[0:params["no_of_post"]]
-	return render_template('index.html', params = params, posts = posts)
+	posts = Posts.query.filter_by().all()
+	last = math.ceil(len(posts) / params["no_of_post"])
+	page = request.args.get("page")
+	if not str(page).isnumeric():
+		page = 1
+	page = int(page)
+	posts = posts[((page-1) * params["no_of_post"]): ((page-1) * params["no_of_post"]) + params["no_of_post"]]
+	if page == 1:
+		pre = '#'
+		nex = "/?page=" + str(page + 1)
+	elif page == last:
+		pre = "/?page=" + str(page - 1)
+		nex = '#'
+	else:
+		pre = "/?page=" + str(page - 1)
+		nex = "/?page=" + str(page + 1)
+	return render_template('index.html', params = params, posts = posts, pre = pre, nex = nex)
 
 @app.route("/admin", methods = ['GET', 'POST'])
 def admin():
@@ -115,8 +131,7 @@ def delete(sno):
 
 @app.route("/index")
 def Home():
-	posts = Posts.query.filter_by().all()[0:params["no_of_post"]]
-	return render_template('index.html', params = params, posts = posts)
+	return redirect('/')
 
 @app.route("/blog")
 def articles():
