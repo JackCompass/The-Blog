@@ -41,6 +41,15 @@ class Posts(db.Model):
 	date = db.Column(db.String(20), nullable=False)
 	slug = db.Column(db.String(50), nullable=False)
 
+class Comments(db.Model):
+	sno = db.Column(db.Integer, primary_key=True)
+	slug = db.Column(db.String(50), nullable=False)
+	name = db.Column(db.String(30), nullable=False)
+	email = db.Column(db.String(50), nullable=False)
+	website = db.Column(db.String(30), nullable=True)
+	message = db.Column(db.String(800), nullable=False)
+	date = db.Column(db.String(20), nullable=False)
+
 
 @app.route("/")
 def main():
@@ -86,9 +95,20 @@ def logout():
 	return redirect('/admin')
 
 
-@app.route("/blog/<string:post_slug>",methods = ['GET'])
+@app.route("/blog/<string:post_slug>",methods = ['GET','POST'])
 def post_from_database(post_slug):
 	post = Posts.query.filter_by(slug = post_slug).first()
+	if request.method == 'POST':
+		''' User will enter data and it will put it in database'''
+		name = request.form.get('name')
+		email = request.form.get('email')
+		website = request.form.get('website')
+		message = request.form.get('message')
+		print("I was here")
+		query = Comments(slug = post.slug, name = name, email = email, website = website, message = message, date = datetime.now())
+		print("This line executed")
+		db.session.add(query)
+		db.session.commit()
 	return render_template('blogpost.html', params = params, post = post)
 
 
@@ -174,7 +194,7 @@ def contact():
 		query = Contacts(name = name, email = email, subject = subject, message = message, time = datetime.now())
 		db.session.add(query)
 		db.session.commit()
-		mail.send_message('New message from ' + name, sender = email, recipients = [params['username']], body = message)
+		# mail.send_message('New message from ' + name, sender = email, recipients = [params['username']], body = message)
 		
 
 	return render_template('contact.html', params = params, posts = posts)
