@@ -98,23 +98,25 @@ def logout():
 @app.route("/blog/<string:post_slug>",methods = ['GET','POST'])
 def post_from_database(post_slug):
 	post = Posts.query.filter_by(slug = post_slug).first()
+	comments = Comments.query.filter_by(slug = post_slug).all()
+	size = len(comments)
 	if request.method == 'POST':
 		''' User will enter data and it will put it in database'''
 		name = request.form.get('name')
 		email = request.form.get('email')
 		website = request.form.get('website')
 		message = request.form.get('message')
-		print("I was here")
 		query = Comments(slug = post.slug, name = name, email = email, website = website, message = message, date = datetime.now())
-		print("This line executed")
 		db.session.add(query)
 		db.session.commit()
-	return render_template('blogpost.html', params = params, post = post)
+		return redirect(f'/blog/{post.slug}')
+
+	return render_template('blogpost.html', params = params, post = post, comments = comments, size = size)
 
 
 @app.route("/management/<string:sno>",methods = ['GET','POST'])
 def manage(sno):
-	# if ('user' in session and session['user'] == params['username']):
+	if ('user' in session and session['user'] == params['username']):
 		if request.method == 'POST':
 			place = request.form.get('place')
 			title = request.form.get('title')
@@ -139,7 +141,7 @@ def manage(sno):
 				db.session.commit()
 				return redirect(f"/management/{sno}")
 		post = Posts.query.filter_by(sno = sno).first()
-		return render_template('management.html', params = params, post = post)
+		return render_template('management.html', params = params, post = post, sno = sno)
 
 @app.route("/delete/<string:sno>", methods =['GET'])
 def delete(sno):
