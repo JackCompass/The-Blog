@@ -45,6 +45,7 @@ class Posts(db.Model):
 @app.route("/")
 def main():
 	posts = Posts.query.filter_by().all()
+	posts.reverse()
 	last = math.ceil(len(posts) / params["no_of_post"])
 	page = request.args.get("page")
 	if not str(page).isnumeric():
@@ -135,7 +136,10 @@ def Home():
 
 @app.route("/blog")
 def articles():
-	return render_template('blog.html', params = params)
+	posts = Posts.query.filter_by().all()
+	posts.reverse()
+	posts = posts[0 : params["no_of_post"]]
+	return render_template('blog.html', params = params, posts = posts)
 
 @app.route("/about")
 def about():
@@ -143,6 +147,9 @@ def about():
 
 @app.route("/contact", methods = ['GET', 'POST'])
 def contact():
+	posts = Posts.query.filter_by().all()
+	posts.reverse()
+	posts = posts[0 : params["no_of_post"]]
 	if request.method == 'POST':
 		''' User will enter data and it will put it in database'''
 		name = request.form.get('name')
@@ -156,7 +163,7 @@ def contact():
 		mail.send_message('New message from ' + name, sender = email, recipients = [params['username']], body = message)
 		
 
-	return render_template('contact.html', params = params)
+	return render_template('contact.html', params = params, posts = posts)
 
 app.run(debug=True)
 

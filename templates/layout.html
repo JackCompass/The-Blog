@@ -63,38 +63,33 @@
           <div class="col-md">
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">latest News</h2>
+              
+              {% for post in posts %}
+
+
               <div class="block-21 mb-4 d-flex">
                 <a class="img mr-4 rounded" style="background-image: url('{{ url_for('static', filename='images/image_1.jpg') }}');"></a>
                 <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <h3 class="heading"><a href="/blog/{{post.slug}}">{{post.title}}</a></h3>
                   <div class="meta">
-                    <div><a href="#"></span> Oct. 16, 2019</a></div>
-                    <div><a href="#"></span> Admin</a></div>
-                    <div><a href="#"></span> 19</a></div>
+                    <div>{{post.date}}</div>
+                    <div>{{params['admin_name']}}</div>
+                    <div>{{post.sno}}</div>
                   </div>
                 </div>
               </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="img mr-4 rounded" style="background-image: url('{{ url_for('static', filename='images/image_2.jpg') }}');"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"></span> Oct. 16, 2019</a></div>
-                    <div><a href="#"></span> Admin</a></div>
-                    <div><a href="#"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
+
+              {% endfor %}
             </div>
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Information</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Home</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>About</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Articles</a></li>
-                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Contact</a></li>
+                <li><a href="/index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Home</a></li>
+                <li><a href="/about" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>About</a></li>
+                <li><a href="/blog" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Articles</a></li>
+                <li><a href="/contact" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Contact</a></li>
               </ul>
             </div>
           </div>
