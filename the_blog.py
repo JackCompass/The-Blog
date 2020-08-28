@@ -138,8 +138,22 @@ def Home():
 def articles():
 	posts = Posts.query.filter_by().all()
 	posts.reverse()
-	posts = posts[0 : params["no_of_post"]]
-	return render_template('blog.html', params = params, posts = posts)
+	last = math.ceil(len(posts) / 9)
+	page = request.args.get("page")
+	if not str(page).isnumeric():
+		page = 1
+	page = int(page)
+	posts = posts[((page-1) * 9): ((page-1) * 9) + 9]
+	if page == 1:
+		pre = '#'
+		nex = "/blog?page=" + str(page + 1)
+	elif page == last:
+		pre = "/blog?page=" + str(page - 1)
+		nex = '#'
+	else:
+		pre = "/blog?page=" + str(page - 1)
+		nex = "/blog?page=" + str(page + 1)
+	return render_template('blog.html', params = params, xposts = posts, pre = pre, nex = nex)
 
 @app.route("/about")
 def about():
