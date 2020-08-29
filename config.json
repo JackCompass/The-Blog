@@ -2,7 +2,7 @@
 	"params":
 	{
 		"local_server": "True",
-		"username":"kumaranuj1303@gmail.com",
+		"username":"",
 		"password":"",
 		"local_uri":"mysql+pymysql://root:@localhost/thetravelers",
 		"prod_uri":"mysql+pymysql://root:@localhost/thetravelers",
