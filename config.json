@@ -21,7 +21,10 @@
 		"password":"mypass",
 		"about_admin":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!",
 		"blog_description":"Lucknow, the capital of Uttar Pradesh was historically known as the Awadh region. Fondly known as the 'City of Nawabs' or the 'City of Tehzeeb', it has always been a city filled with varied cultures.",
-		"about_blog":"Far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+		"about_blog":"Far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+		"about_mission":"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+		"about_vision":"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+		"about_value":"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
 
 
 	}

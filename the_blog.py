@@ -93,7 +93,10 @@ def Home():
 
 @app.route("/about")
 def about():
-	return render_template('about.html', params = params)
+	posts = Posts.query.filter_by().all()
+	posts.reverse()
+	posts = posts[0 : params["no_of_post"]]
+	return render_template('about.html', params = params, posts = posts)
 
 @app.route("/blog")
 def articles():
