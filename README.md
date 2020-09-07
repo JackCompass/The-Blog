@@ -22,3 +22,5 @@ A web application *The Blog* developed for bloggers and influencers.
 
 #### Developed By ####
 * Anuj Singh
+
+ [Report a Bug](https://github.com/JackCompass/The-Blog/issues/new)
