@@ -16,6 +16,7 @@ A web application *The Blog* developed for bloggers and influencers.
   * flask
   * SQLAlchemy
   * json
+  * requests
   * Flask-Mail
 * Download Xampp to host the database to local server.
 * Enable SMTP of your account to recieve e-mail
